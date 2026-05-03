@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class Count : MonoBehaviour
+public class Counter : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
 
     private int _counter = 0;
     private Coroutine _counterRoutine;
-    private WaitForSeconds wait = new WaitForSeconds(0.5f);
+    private WaitForSeconds _timeDelay = new WaitForSeconds(0.5f);
 
     private void OnEnable()
     {
@@ -34,11 +34,9 @@ public class Count : MonoBehaviour
 
     private IEnumerator TimerRoutine()
     {
-        Debug.Log("sdfasdf");
-
         while (enabled)
         {
-            yield return wait;
+            yield return _timeDelay;
             _counter++;
             Debug.Log($"счетчик: {_counter}");
         }
